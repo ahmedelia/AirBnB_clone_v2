@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+# clean
+"""clean usign fabric"""
+from fabric.api import local
+import os
+
+
+def do_clean(number=0):
+    """clean function"""
+    os.chdir('versions')
+    current = os.getcwd()
+    files = os.listdir(current)
+    files.sort()
+    if number == 0:
+        numer = 1:
+    for i in len(files - number):
+        os.remove(files[i])
+
+
+
+
