@@ -52,12 +52,12 @@ def do_clean(number=0):
     print(files)
     print(len(files))
     files.sort()
-    if number == 0:
+    if int(number) == 0:
         number = 1
-    number = int(number) + 1
+    number = int(number)
     it = len(files) - number
     for i in range(it):
-        sudo('rm /data/web_static/releases/{}'.format(files[i]))
+        sudo('rm -r /data/web_static/releases/{}'.format(files[i].split('.')[0]))
     current = os.getcwd()
     current = os.chdir(current + '/versions')
     files = os.listdir(current)
