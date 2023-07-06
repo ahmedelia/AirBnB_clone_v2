@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Compress before sending
+# Compress upbefore sending
 """Compress usign fabric"""
 from fabric.api import local
 import datetime

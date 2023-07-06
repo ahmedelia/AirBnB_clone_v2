@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 # Compress before sending
-"""Compress usign fabric -- all in one"""
+"""Compress usign fabric up -- all in one"""
 from fabric.api import sudo, env, put, local
 import os
 import datetime
 
 
-env.hosts = ['54.209.141.133', '100.26.221.3']
+env.hosts = ['54.157.191.131', '35.168.8.139']
 
 
 def do_pack():

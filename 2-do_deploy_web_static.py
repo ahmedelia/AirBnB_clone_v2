@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
+# -*- up coding: utf-8 -*-
 # deploy sending
 
 """deploy archive usign fabric"""
@@ -8,7 +8,7 @@ from fabric.api import sudo, env, put
 import os
 
 
-env.hosts = ['54.209.141.133', '100.26.221.3']
+env.hosts = ['35.168.8.139', '54.157.191.131']
 
 
 def do_deploy(archive_path):

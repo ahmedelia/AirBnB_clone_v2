@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # Compress before sending
-"""Compress usign fabric -- all in one"""
+"""Compresss usign fabric -- all in one"""
 from fabric.api import sudo, env, put, local
 import os
 import datetime
