@@ -57,7 +57,8 @@ def do_clean(number=0):
     number = int(number)
     it = len(files) - number
     for i in range(it):
-        sudo('rm -r /data/web_static/releases/{}'.format(files[i].split('.')[0]))
+        sudo(
+            'rm -r /data/web_static/releases/{}'.format(files[i].split('.')[0]))
     current = os.getcwd()
     current = os.chdir(current + '/versions')
     files = os.listdir(current)
