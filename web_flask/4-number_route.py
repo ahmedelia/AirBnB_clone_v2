@@ -34,7 +34,7 @@ def py(text):
 @app.route("/number/<int:text>", strict_slashes=False)
 def number(text):
     """py page"""
-    return f"{escape(text)}"
+    return f"{escape(text)} is a number"
 
 
 if __name__ == "__main__":
