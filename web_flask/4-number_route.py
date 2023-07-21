@@ -20,15 +20,21 @@ def hbnb():
 
 @app.route("/c/<text>", strict_slashes=False)
 def c(text):
-	"""C page"""
+    """C page"""
     return f"C {escape(text.replace('_', ' '))}"
 
 
 @app.route("/python/", defaults={"text": "is cool"}, strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
 def py(text):
-	"""py page"""
+    """py page"""
     return f"Python {escape(text.replace('_', ' '))}"
+
+
+@app.route("/number/<int:text>", strict_slashes=False)
+def number(text):
+    """py page"""
+    return f"{escape(text)}"
 
 
 if __name__ == "__main__":
