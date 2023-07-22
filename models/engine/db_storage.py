@@ -62,9 +62,9 @@ class DBStorage:
     def reload(self):
         """create session scoped to perform crud"""
         Base.metadata.create_all(self.__engine)
-        self.__session = sessionmaker(
+        factory = sessionmaker(
             bind=self.__engine, expire_on_commit=False)
-        self.__session = scoped_session(self.__session)
+        self.__session = scoped_session(factory)
 
     def close(self):
         """Close"""

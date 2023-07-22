@@ -49,20 +49,20 @@ class Place(BaseModel, Base):
     if storage_type == "db":
         amenities = relationship("Amenity", secondary="place_amenity",
                                  back_populates='place_amenities', viewonly=False)
+    else:
+        @property
+        def amenities(self):
+            """get list of amentities"""
+            from models import storage
+            amenities = storage.all(Amenity)
+            return [item for item in amenities.values() if item.id in amenity_ids]
 
-    @property
-    def amenities(self):
-        """get list of amentities"""
-        from models import storage
-        amenities = storage.all(Amenity)
-        return [item for item in amenities.values() if item.id in amenity_ids]
-
-    @amenities.setter
-    def amenities(self, val):
-        """add new amentites to the list"""
-        if type(val) != eval("Amenity"):
-            return
-        amenity_ids.append(val.id)
+        @amenities.setter
+        def amenities(self, val):
+            """add new amentites to the list"""
+            if type(val) != eval("Amenity"):
+                return
+            amenity_ids.append(val.id)
 
     def __init__(self, *args, **kwargs):
         """ Set up an instance with its properties. """
