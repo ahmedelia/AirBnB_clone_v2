@@ -52,16 +52,20 @@ class DBStorage:
         return dictionary
 
     def new(self, obj):
-        """Adds new object to storage dictionary"""
+        """Adds new object to session"""
         self.__session.add(obj)
 
     def save(self):
-        """Saves storage dictionary to file"""
+        """commit changes to db"""
         self.__session.commit()
 
     def reload(self):
-        """Loads storage dictionary from file"""
+        """create session scoped to perform crud"""
         Base.metadata.create_all(self.__engine)
         self.__session = sessionmaker(
             bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(self.__session)()
+
+    def close(self):
+        """Close"""
+        self.__session.close()
