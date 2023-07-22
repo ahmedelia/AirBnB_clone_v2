@@ -33,13 +33,13 @@ class DBStorage:
 
     def delete(self, obj=None):
         """Delete a Obj from __Objects"""
-        if obj != None:
+        if obj is not None:
             self.__session.delete(obj)
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
         dictionary = {}
-        if cls != None:
+        if cls is not None:
             query = self.__session.query(cls).all()
             for obj in query:
                 dictionary[obj.id + '.' + cls.__name__] = obj
