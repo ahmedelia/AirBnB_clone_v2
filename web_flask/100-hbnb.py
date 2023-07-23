@@ -5,6 +5,8 @@ from flask import render_template
 from models import storage
 from models.state import State
 from models.amenity import Amenity
+from models.place import Place
+
 
 app = Flask(__name__)
 
@@ -18,13 +20,12 @@ def poped(err):
 @app.route("/hbnb_filters", strict_slashes=False)
 def hbnb_filters():
     """serve hbnb_filters"""
-    states = storage.all(State).values()
+    states = storage.all(State)
     amenities = storage.all(Amenity)
-    state_cities = {}
-    for state in states:
-        state_cities[state] = state.cities
-    return render_template("10-hbnb_filters.html", states=state_cities, amenities=amenities)
+    places = storage.all(Place)
+    print(list(places.values())[0].owner)
+    return render_template("100-hbnb.html", states=states, places=places, amenities=amenities)
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)

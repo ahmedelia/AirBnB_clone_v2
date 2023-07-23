@@ -1,4 +1,8 @@
+.container {
+	position: relative;
+}
 .filters {
+	z-index: 2;
 	display: block;
 	background-color: white;
 	height: 70px;
@@ -13,9 +17,9 @@
 	float: left;
 	height: 100%;
 	width: 25%;
-
 	line-height: 20px;
 	border-right: 1px solid #dddddd;
+	position: relative;
 }
 
 .amenities {
@@ -24,16 +28,15 @@
 	height: 100%;
 	float: left;
 	width: 25%;
-
+	position: relative;
 	line-height: 20px;
 }
 
 .popover {
 	list-style-type: none;
-	display: none;
+	visibility: hidden;
 	background-color: #fafafa;
 	width: 100%;
-
 	margin-left: -1px;
 	margin-top: 8px;
 	padding: 25px 0px;
@@ -41,14 +44,17 @@
 	border-radius: 4px;
 	max-height: 300px;
 	overflow-y: auto;
+	position: absolute;
 }
 
 .locations:hover .popover {
-	display: inline-block;
+	visibility: visible;
+	z-index: 1;
 }
 
 .amenities:hover .popover {
-	display: inline-block;
+	visibility: visible;
+	z-index: 1;
 }
 
 ul {

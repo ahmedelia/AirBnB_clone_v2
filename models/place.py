@@ -2,7 +2,6 @@
 """ Place Module for HBNB project """
 from models.base_model import BaseModel, Base
 from models.review import Review
-from models.amenity import Amenity
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy import create_engine, String, Column, Integer, Date, ForeignKey, Float, Table
 from os import getenv
@@ -34,6 +33,15 @@ class Place(BaseModel, Base):
     latitude = Column(Float)
     longitude = Column(Float)
     amenity_ids = []
+    @property
+    def owner(self):
+        from models import storage
+        from models.user import User
+        users = storage.all(User).values()
+        for user in users:
+            if self.user_id == user.id:
+                return user.first_name + " " + user.last_name
+        return "not found"
 
     if storage_type == "db":
         reviews = relationship("Review", backref="place")
@@ -54,6 +62,8 @@ class Place(BaseModel, Base):
         def amenities(self):
             """get list of amentities"""
             from models import storage
+            from models.amenity import Amenity
+
             amenities = storage.all(Amenity)
             return [item for item in amenities.values() if item.id in amenity_ids]
 
